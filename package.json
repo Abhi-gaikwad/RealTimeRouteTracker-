@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@clerk/clerk-react": "^5.25.5",
     "@react-google-maps/api": "^2.19.3",
     "axios": "^1.8.1",
     "chart.js": "^4.4.8",

@@ -7,15 +7,37 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (password !== confirmPassword) {
       alert('Passwords do not match!');
       return;
     }
-    console.log('Name:', name);
-    console.log('Email:', email);
-    console.log('Password:', password);
+
+    const userData = { name, email, password };
+
+    try {
+      const response = await fetch('http://localhost:5000/api/users/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert('Sign up successful!');
+        setName('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+      } else {
+        alert(data.message || 'Sign up failed!');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Something went wrong!');
+    }
   };
 
   return (
@@ -75,11 +97,8 @@ const SignUp = () => {
           <button type="submit" style={styles.button}>Sign Up</button>
         </form>
         <p style={styles.footerText}>
-          Already have an account?<Link to="/signin" style={styles.link}> Sign in</Link>
+          Already have an account? <Link to="/signin" style={styles.link}>Sign in</Link>
         </p>
-          {/* <p style={styles.footerText}>
-                  Don't have an account? <Link to="/signup" style={styles.link}>Sign up</Link>
-                </p> */}
       </div>
     </div>
   );

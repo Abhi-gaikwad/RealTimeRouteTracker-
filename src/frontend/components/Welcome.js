@@ -20,7 +20,7 @@ const Welcome = ({ setSource, setDestination, handleUserChoice }) => {
   return (
     <section className="welcome-section">
       <div className="welcome-content">
-        <h1>Welcome to MY A. G. TravelSafe</h1>
+        <h1>Welcome to TravelSafe</h1>
         <p>Your guide to safer travels and smart route planning.</p>
 
         <div className="location-inputs">
@@ -40,11 +40,12 @@ const Welcome = ({ setSource, setDestination, handleUserChoice }) => {
 
         {errorMessage && <div className="error-message">{errorMessage}</div>}
 
-        <div className="buttons-container">
-          <button className="show-routes-btn" onClick={() => handleClick('showRoutes')}>
+        <div className="buttons-container" >
+          <button className="show-route-btn" onClick={() => handleClick('showRoutes')}>
             Show Routes
           </button>
-          <button className="start-journey-btn" onClick={() => handleClick('startJourney')}>
+        
+          <button className="show-route-btn" onClick={() => handleClick('startJourney')}>
             Start Journey
           </button>
         </div>

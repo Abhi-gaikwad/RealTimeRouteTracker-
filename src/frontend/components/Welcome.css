@@ -157,16 +157,24 @@
 /* 🚀 Show Route Button */
 .show-route-btn {
   padding: 15px 50px;
-  background: linear-gradient(135deg, #4faaf7, #f24b21); /* Gradient for the button */
+  background-color: #007BFF; /* Solid blue color */
   color: #fff;
   border: none;
-  border-radius: 50px;
+  border-radius: 50px; /* Ensures rounded corners */
   font-size: 1.2rem;
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   margin-top: 20px; /* Add margin to separate from other elements */
 }
+
+.buttons-container {
+  display: flex;  /* Use flexbox layout */
+  justify-content: center;  /* Center the buttons horizontally */
+  gap: 20px;  /* Add space between the buttons */
+}
+
+
 
 .show-route-btn:hover {
   transform: translateY(-5px);

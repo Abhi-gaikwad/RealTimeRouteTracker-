@@ -26,6 +26,10 @@ function App() {
     }
   };
 
+  const handleLogin = () => {
+    setIsLoggedIn(true); // Update the state to true after successful login
+  };
+
   return (
     <Router>
       <Routes>
@@ -33,7 +37,7 @@ function App() {
         <Route path="/" element={isLoggedIn ? <Navigate to="/home" /> : <Navigate to="/signin" />} />
 
         {/* SignIn Page */}
-        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signin" element={<SignIn handleLogin={handleLogin} />} />
 
         {/* SignUp Page */}
         <Route path="/signup" element={<SignUp />} />

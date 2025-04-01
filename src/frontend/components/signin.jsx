@@ -1,14 +1,35 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const SignIn = () => {
+const SignIn = ({ handleLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // For redirecting after successful login
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Email:', email);
-    console.log('Password:', password);
+
+    const userData = { email, password };
+
+    try {
+      const response = await fetch('http://localhost:5000/api/users/signin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userData),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        // alert('User signed in successfully!');
+        handleLogin(); // Update the isLoggedIn state in App.js
+        navigate('/home'); // Redirect to the home page after successful sign-in
+      } else {
+        alert(data.message || 'Sign-in failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Something went wrong. Please try again.');
+    }
   };
 
   return (
@@ -25,7 +46,7 @@ const SignIn = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               style={styles.input}
-              placeholder="Enter Username"
+              placeholder="Enter your "
               required
             />
           </div>
@@ -50,6 +71,7 @@ const SignIn = () => {
     </div>
   );
 };
+
 
 const styles = {
   container: {

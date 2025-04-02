@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import "./IssueHandler.css";
 
 const IssueHandler = ({ source, destination, onClose }) => {
   const [selectedIssue, setSelectedIssue] = useState("");
@@ -30,7 +31,7 @@ const IssueHandler = ({ source, destination, onClose }) => {
       {/* Background Overlay with Blur Effect */}
       <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md flex items-center justify-center z-50">
         {/* Floating Card with Animation */}
-        <motion.div 
+        <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 50, opacity: 0 }}
@@ -39,9 +40,9 @@ const IssueHandler = ({ source, destination, onClose }) => {
           {/* Close Button */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 text-gray-100 hover:text-red-300 text-2xl transition-all"
+            className="cancel-icon-btn"
           >
-            ✖
+            ✖ cut mark
           </button>
 
           {/* Header */}
@@ -52,12 +53,11 @@ const IssueHandler = ({ source, destination, onClose }) => {
             Select an issue and help us improve safety.
           </p>
 
-          {/* Dropdown Menu */}
           <div className="relative">
             <select
               value={selectedIssue}
               onChange={(e) => setSelectedIssue(e.target.value)}
-              className="w-full p-4 border rounded-lg bg-white text-gray-900 text-lg focus:ring focus:ring-yellow-400 transition"
+              className="custom-select-dropdown" // Use the custom class name
             >
               <option value="" disabled>Select an issue</option>
               <option value="Path Not Found">🚧 Path Not Found</option>
@@ -67,10 +67,9 @@ const IssueHandler = ({ source, destination, onClose }) => {
             </select>
           </div>
 
-          {/* Submit Button */}
           <button
             onClick={handleSubmit}
-            className="mt-6 w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-semibold py-3 text-lg rounded-lg transition-all duration-300"
+            className="custom-submit-btn" // Use the custom class name
           >
             Report Issue
           </button>

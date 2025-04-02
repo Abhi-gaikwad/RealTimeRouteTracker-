@@ -22,7 +22,7 @@ const Navbar = () => {
         <a href="#welcome">Welcome</a>
         <a href="#maproutes">Map Routes</a>
         <a href="#safetyinsights">Safety Insights</a>
-        <a href="#features">Features</a>
+        {/* <a href="#features">Features</a> */}
         <a href="#about">About</a>
         <a href="#footer">Footer</a>
       </div>

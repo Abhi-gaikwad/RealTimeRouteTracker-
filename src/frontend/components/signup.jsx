@@ -8,33 +8,36 @@ const SignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate(); // Initialize useNavigate
 
+  const [mobile, setMobile] = useState('');
+  const [emergencyMobile, setEmergencyMobile] = useState('');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+  
     if (password !== confirmPassword) {
-      alert('Passwords do not match!');
+      alert("Passwords do not match!");
       return;
     }
-
-    const userData = { name, email, password };
-
+  
+    const userData = { name, email, password, mobile, emergencyMobile };
+  
     try {
-      const response = await fetch('http://localhost:5000/api/users/signup', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("http://localhost:5000/api/users/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(userData),
       });
-
+  
       const data = await response.json();
       if (response.ok) {
-        alert('Sign up successful! Redirecting to Sign In...');
-        navigate('/signin'); // Redirect to sign-in page
+        // alert(`Sign up successful! Your unique ID is: ${data.uniqueId}`);
+        navigate("/signin");
       } else {
-        alert(data.message || 'Sign up failed!');
+        alert(data.message || "Sign up failed!");
       }
     } catch (error) {
-      console.error('Error:', error);
-      alert('Something went wrong!');
+      console.error("Error:", error);
+      alert("Something went wrong!");
     }
   };
 
@@ -65,6 +68,30 @@ const SignUp = () => {
               onChange={(e) => setEmail(e.target.value)}
               style={styles.input}
               placeholder="Enter your "
+              required
+            />
+          </div>
+          <div style={styles.inputGroup}>
+            <label htmlFor="mobile" style={styles.label}>Mobile Number</label>
+            <input
+              type="text"
+              id="mobile"
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
+              style={styles.input}
+              placeholder="Enter your mobile number"
+              required
+            />
+          </div>
+          <div style={styles.inputGroup}>
+            <label htmlFor="emergencyMobile" style={styles.label}>Emergency Mobile Number</label>
+            <input
+              type="text"
+              id="emergencyMobile"
+              value={emergencyMobile}
+              onChange={(e) => setEmergencyMobile(e.target.value)}
+              style={styles.input}
+              placeholder="Enter emergency mobile number"
               required
             />
           </div>

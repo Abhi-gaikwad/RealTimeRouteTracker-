@@ -20,7 +20,8 @@
     "react-router-dom": "^6.30.0",
     "react-scripts": "5.0.1",
     "react-select": "^5.10.1",
-    "styled-components": "^6.1.15"
+    "styled-components": "^6.1.15",
+    "uuid": "^11.1.0"
   },
   "scripts": {
     "start": "react-scripts start",

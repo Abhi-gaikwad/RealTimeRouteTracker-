@@ -23,6 +23,73 @@
     position: relative;
     animation: fadeIn 0.3s ease-in-out;
   }
+
+  .cancel-icon-btn {
+    position: absolute;
+    top: 1rem; /* Adjust the top position */
+    right: 1rem; /* Adjust the right position */
+    color: #f3f4f6; /* Light gray color */
+    font-size: 2rem; /* Icon size */
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+    background: none; /* No background */
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer cursor on hover */
+    z-index: 10; /* Ensure it appears above other elements */
+  }
+  
+  .cancel-icon-btn:hover {
+    color:rgb(255, 0, 0); /* Red color on hover */
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+  }
+
+  .custom-select-dropdown {
+    display: block; /* Center the element */
+    margin: 0 auto; /* Center horizontally */
+    width: 30%; /* Adjust the width to 80% of the parent */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #333333;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+  }
+  
+  .custom-select-dropdown:focus {
+    border-color: #facc15; /* Yellow border on focus */
+    box-shadow: 0 0 8px rgba(250, 204, 21, 0.5); /* Yellow glow */
+  }
+  
+  .custom-select-dropdown option {
+    padding: 10px;
+    background: #ffffff;
+    color: #333333;
+  }
+  
+  .custom-select-dropdown option:hover {
+    background: #f3f4f6; /* Light gray background on hover */
+  }
+
+  .custom-submit-btn {
+    display: block; /* Center the element */
+    margin: 1.5rem auto 0; /* Center horizontally and add top margin */
+    width: 20%; /* Adjust the width to 80% of the parent */
+    background: #facc15; /* Yellow background */
+    color: #1f2937; /* Dark gray text */
+    font-weight: 600;
+    padding: 12px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .custom-submit-btn:hover {
+    background: #fbbf24; /* Darker yellow on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+  }
   
   /* Unique Close Button */
   .issue-handler-unique-close-btn {

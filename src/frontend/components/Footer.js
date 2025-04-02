@@ -10,7 +10,7 @@ const Footer = () => {
         <div className="footer-logo">
           {/* Use an <img> tag to display the logo */}
           <img src={icon} alt="TravelSafe Logo" className="footer-logo-image" />
-          <p>Creating memorable travel experiences</p>
+          <p>Creating safest travel experiences.</p>
         </div>
         <div className="footer-contact">
           <h4>Contact Us</h4>

@@ -23,20 +23,31 @@ const SafetyInsights = () => {
 
     useEffect(() => {
         setLoading(true);
+    
         Promise.all([
-            fetch('data/accidents_2019.json').then(response => response.json()),
-            fetch('data/crimedata.json').then(response => response.json())
+            fetch('/data/accidents_2019.json')
+                .then(response => {
+                    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                    return response.json();
+                }),
+            fetch('/data/crimedata.json')
+                .then(response => {
+                    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+                    return response.json();
+                })
         ])
-            .then(([accidentData, crimeData]) => {
-                setAccidentData(accidentData);
-                setCrimeData(crimeData);
-                setLoading(false);
-            })
-            .catch(error => {
-                setError(error.message);
-                setLoading(false);
-            });
+        .then(([accidentData, crimeData]) => {
+            setAccidentData(accidentData);
+            setCrimeData(crimeData);
+            setLoading(false);
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
+            setError(error.message);
+            setLoading(false);
+        });
     }, []);
+    
 
     useEffect(() => {
         if (dataType === 'accidents' && accidentData.length > 0 && selectedState) {

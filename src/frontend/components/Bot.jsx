@@ -1,12 +1,22 @@
-import React, { useState } from "react";
+import React, { useState ,  useRef, useEffect  } from "react";
 import axios from "axios";
 import crimeData from "./crimeData.json";
 import "./Bot.css";
+import Icon from './assets/travelsafe_logo.png';
+
 
 const TravelSafeBot = () => {
   const [chatHistory, setChatHistory] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const chatBodyRef = useRef(null); // Reference for the chat body
+
+  useEffect(() => {
+    if (chatBodyRef.current) {
+      chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+    }
+  }, [chatHistory]); // Trigger this effect whenever chatHistory updates
 
   const GEMINI_API_KEY = "AIzaSyDdifJhrztNdBYGKGWM1xDtQr3vP2GSTds"; // Replace with your API Key
   const OPENSTREETMAP_API = "https://nominatim.openstreetmap.org/search";
@@ -69,7 +79,17 @@ const TravelSafeBot = () => {
     try {
       const response = await axios.post(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
-        { contents: [{ parts: [{ text: query }] }] },
+        {
+          contents: [
+            {
+              parts: [
+                {
+                  text: `You are a tourist guide. Answer only location-related queries or crime rates or safe routes or short routes. Also dont add ** for bolding the text , halting my formatting . Give short response .  User query: "${query}"`,
+                },
+              ],
+            },
+          ],
+        },
         { headers: { "Content-Type": "application/json" } }
       );
 
@@ -110,23 +130,22 @@ const TravelSafeBot = () => {
   return (
     <div className="chatbot-container">
       <button className="chatbot-toggle" onClick={() => setIsOpen(!isOpen)}>
-      <img 
-    src={require('./assets/chatbot_icon.png')} 
-    alt="Chatbot Icon" 
-    className="chatbot-icon" 
-  />
+        <img
+          src={require('./assets/chatbot_icon.png')}
+          alt="Chatbot Icon"
+          className="chatbot-icon"
+        />
       </button>
 
       {isOpen && (
         <div className="chatbot-popup">
           <div className="chat-header">
-            <h2>TravelSafe Bot</h2>
-            <button onClick={() => setIsOpen(false)} className="close-btn">
-              ×
-            </button>
+            <img src={Icon} className="chat_bot_icon" alt="Chatbot Icon" />
+            <h2>TravelSafe Chatbot is here to help you in your Journey !</h2>
+            <button onClick={() => setIsOpen(false)} className="close-btn">×</button>
           </div>
 
-          <div className="chat-body">
+          <div className="chat-body" ref={chatBodyRef}>
             {chatHistory.map((chat, index) => (
               <div key={index} className={`chat-message ${chat.role}`}>
                 {chat.text}
@@ -134,7 +153,6 @@ const TravelSafeBot = () => {
             ))}
             {loading && <div className="chat-message bot">Thinking...</div>}
           </div>
-
           <div className="chat-footer">
             <input
               type="text"
@@ -156,3 +174,4 @@ const TravelSafeBot = () => {
 };
 
 export default TravelSafeBot;
+

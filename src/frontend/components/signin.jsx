@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const SignIn = ({ handleLogin }) => {
+const SignIn = () => { // Removed handleLogin from props
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate(); // For redirecting after successful login
@@ -21,8 +21,7 @@ const SignIn = ({ handleLogin }) => {
       const data = await response.json();
       if (response.ok) {
         // alert('User signed in successfully!');
-        handleLogin(); // Update the isLoggedIn state in App.js
-        navigate('/home'); // Redirect to the home page after successful sign-in
+        navigate('/dashboard'); // Redirect to the dashboard
       } else {
         alert(data.message || 'Sign-in failed');
       }

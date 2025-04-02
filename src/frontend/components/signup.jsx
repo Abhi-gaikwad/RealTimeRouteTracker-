@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,11 +27,8 @@ const SignUp = () => {
 
       const data = await response.json();
       if (response.ok) {
-        alert('Sign up successful!');
-        setName('');
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
+        alert('Sign up successful! Redirecting to Sign In...');
+        navigate('/signin'); // Redirect to sign-in page
       } else {
         alert(data.message || 'Sign up failed!');
       }

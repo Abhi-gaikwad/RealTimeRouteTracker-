@@ -3,8 +3,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background: rgba(34, 34, 34, 0.7); /* Semi-transparent navbar */
+    padding: 0.0rem 2rem;
+    background: rgb(229, 234, 243); /* Semi-transparent navbar */
     backdrop-filter: blur(10px); /* Glassmorphism effect */
     color: #fff;
     font-family: 'Poppins', sans-serif;
@@ -14,6 +14,7 @@
     left: 0;
     z-index: 1000;
     transition: background 0.3s ease-in-out;
+    margin: -0.4rem 0;
 }
 
 /* Logo Styling */
@@ -21,15 +22,27 @@
     margin: 0;
     font-size: 1.8rem;
     font-weight: bold;
-    color: #fff;
-    letter-spacing: 1px;
+    color: black;
+    /* letter-spacing: 1px; */
     transition: color 0.3s ease-in-out;
+    
 }
 
 .navbar-logo h1:hover {
     color: #ff8c00; /* Glowing effect on hover */
 }
 
+.navbar-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-image {
+    width: 100px; /* Adjust the size as needed */
+    height: 80px;
+    margin-right: 10px; /* Space between the logo and the text */
+    object-fit: contain; /* Ensures the image maintains its aspect ratio */
+  }
 /* Menu Links */
 .navbar-menu {
     display: flex;
@@ -37,7 +50,7 @@
 }
 
 .navbar-menu a {
-    color: #fff;
+    color: black;
     text-decoration: none;
     font-size: 1rem;
     position: relative;

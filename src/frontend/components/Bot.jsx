@@ -110,7 +110,11 @@ const TravelSafeBot = () => {
   return (
     <div className="chatbot-container">
       <button className="chatbot-toggle" onClick={() => setIsOpen(!isOpen)}>
-        <span className="material-symbols-outlined">chat</span>
+      <img 
+    src={require('./assets/chatbot_icon.png')} 
+    alt="Chatbot Icon" 
+    className="chatbot-icon" 
+  />
       </button>
 
       {isOpen && (

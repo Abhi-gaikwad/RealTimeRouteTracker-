@@ -5,9 +5,7 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background: url(
-    "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dHJhdmVsJTIwYnVzfGVufDB8MHwwfHx8MA%3D%3D"
-  ) no-repeat center center; /* Ensure the image does not repeat and is centered */
+  background: url(./assets/travel_background.jpg) no-repeat center center; /* Adjust the path if needed */
   background-size: cover; /* Ensure the image covers the entire section */
   text-align: center;
   color: #fff;
@@ -81,7 +79,11 @@
 .welcome-content {
   text-align: center;
   padding: 0 20px;
-  animation: fadeInUp 1s ease forwards;
+  display: flex; /* Add this */
+  flex-direction: column; /* Add this */
+  align-items: center; /* Add this */
+  justify-content: center; /* Add this */
+  height: 100%; /* Add this to ensure it takes full height */
 }
 
 .welcome-content h1 {
@@ -120,13 +122,13 @@
   font-size: 1rem;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
   transition: all 0.3s ease;
-  background: rgba(255, 255, 255, 1); /* Changed to solid white background */
+  background: rgb(234, 221, 221); /* Changed to solid white background */
   color: #000; /* Changed text color to black */
   border: black;
 }
 
 .location-inputs input::placeholder {
-  color: #ccc; /* Softer placeholder color */
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .location-inputs input:focus {

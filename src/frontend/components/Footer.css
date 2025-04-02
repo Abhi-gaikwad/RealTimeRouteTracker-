@@ -54,6 +54,15 @@
     font-size: 0.9rem; /* Smaller font size for contact info */
   }
   
+  .footer-logo-image {
+    width: 100px; /* Adjust the size as needed */
+    height: auto;
+    margin-bottom: 10px; /* Add spacing below the logo */
+    background: white; /* Background color */
+    border-radius: 50%; /* Makes the background fully rounded */
+    padding: 10px; /* Optional: Add padding around the image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow for better visibility */
+}
   .footer-contact a {
     color: #E0E0E0; /* Light grey link color */
     text-decoration: none; /* No underline */

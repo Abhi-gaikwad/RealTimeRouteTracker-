@@ -11,7 +11,12 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <h1>TravelSafe</h1>
+        <img 
+          src={require('./assets/travelsafe_logo.png')} 
+          alt="TravelSafe Logo" 
+          className="logo-image" 
+        />
+        {/* <h1>TravelSafe</h1> */}
       </div>
       <div className={`navbar-menu ${menuOpen ? 'open' : ''}`}>
         <a href="#welcome">Welcome</a>

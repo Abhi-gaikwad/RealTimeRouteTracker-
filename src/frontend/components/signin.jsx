@@ -8,20 +8,20 @@ const SignIn = () => { // Removed handleLogin from props
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const userData = { email, password };
-
+  
     try {
       const response = await fetch('http://localhost:5000/api/users/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(userData),
       });
-
+  
       const data = await response.json();
       if (response.ok) {
-        // alert('User signed in successfully!');
-        navigate('/dashboard'); // Redirect to the dashboard
+        // Navigate to the dashboard with the uniqueId in the URL
+        navigate(`/dashboard/${data.uniqueId}`);
       } else {
         alert(data.message || 'Sign-in failed');
       }

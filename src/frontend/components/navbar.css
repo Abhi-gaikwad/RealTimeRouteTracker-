@@ -46,7 +46,8 @@
 /* Menu Links */
 .navbar-menu {
     display: flex;
-    gap: 2rem;
+    align-items: center; /* Align items vertically */
+    gap: 1.5rem; /* Adjust the spacing between links */
 }
 
 .navbar-menu a {
@@ -74,6 +75,51 @@
     color: #ff8c00;
 }
 
+.navbar-profile-icon {
+    display: flex; /* Ensure proper alignment */
+    align-items: center; /* Center the icon vertically */
+    justify-content: center; /* Center the icon horizontally */
+    margin-left: auto; /* Push the profile icon to the far right */
+    cursor: pointer;
+    background: none; /* Remove the default button background */
+    border: none; /* Remove the default button border */
+    padding: 0; /* Remove any default padding */
+    outline: none; /* Remove the focus outline */
+}
+
+.profile-icon {
+    width: 40px; /* Adjust the size of the icon */
+    height: 40px;
+    border-radius: 50%; /* Make the icon circular */
+    object-fit: cover; /* Ensure the image fits within the circle */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-icon:hover {
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a shadow effect on hover */
+}
+
+.navbar-home-icon {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* Space between the icon and the text */
+    color: black;
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .navbar-home-icon:hover {
+    color: #ff8c00; /* Change color on hover */
+  }
+  
+  .home-icon {
+    width: 20px; /* Adjust the size of the home icon */
+    height: 20px;
+    object-fit: contain; /* Ensure the image maintains its aspect ratio */
+  }
 .navbar-menu a:hover::after {
     width: 100%;
 }
